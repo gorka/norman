@@ -75,3 +75,5 @@ group :test do
 end
 
 gem "http", "~> 5.1"
+
+gem "devise", "~> 4.8"
