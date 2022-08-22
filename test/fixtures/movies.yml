@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tmdb_id: 1
+  title: MyString
+  release_date: 2022-08-21
+  runtime: 1
+  raw_data: 
+
+two:
+  tmdb_id: 1
+  title: MyString
+  release_date: 2022-08-21
+  runtime: 1
+  raw_data: 
