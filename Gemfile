@@ -77,3 +77,5 @@ end
 gem "http", "~> 5.1"
 
 gem "devise", "~> 4.8"
+
+gem "pundit", "~> 2.2"
