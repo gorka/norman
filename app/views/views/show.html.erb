@@ -1,18 +1,18 @@
 <div class="mx-auto w-full md:max-w-2xl">
   <h1 class="text-4xl mb-5"><%= @view.viewable.title %></h1>
 
-  <div class="p-2 flex flex-wrap justify-between bg-white rounded-md">
+  <div class="p-2 flex flex-col md:flex-row flex-wrap justify-between bg-white rounded-md">
     <div class="flex space-x-3">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
       </svg>
       <span><%= @view.date.to_fs(:rfc822) %></span>
     </div>
-    <div class="flex">
+    <div class="flex mt-3 md:mt-0">
       <%= stars(@view.rating) %>
     </div>
     <% if @view.comment.present? %>
-      <div class="w-full mt-5">
+      <div class="w-full mt-5 pt-3 border-t border-slate-100">
         <%= @view.comment %>
       </div>
     <% end %>
