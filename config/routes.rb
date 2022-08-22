@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :views, shallow: true
   end
 
-  root "movies#index"
+  resources :views, only: %i( index )
+
+  root "views#index"
 end

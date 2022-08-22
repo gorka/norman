@@ -1,4 +1,8 @@
 class ViewsController < ApplicationController
+  def index
+    @views = View.all.order(date: :desc, created_at: :desc)
+  end
+
   def show
     @view = authorize View.find(params[:id])
   end

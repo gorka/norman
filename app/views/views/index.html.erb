@@ -1,0 +1,12 @@
+<div class="mx-auto w-full md:max-w-2xl"> 
+  <h1 class="text-4xl mb-5">Últimas películas vistas</h1>
+  <div class="space-y-3">
+    <% @views.each do |view| %>
+      <div class="flex space-x-5 p-2 bg-white rounded-md">
+        <div class=""><%= view.date.to_fs(:short)  %></div>
+        <div class=""><%= link_to view.viewable.title, view_path(view) %></div>
+        <div class="grow flex justify-end"><%= stars(view.rating) %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
