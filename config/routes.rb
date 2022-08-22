@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+
+    resources :views, shallow: true
   end
 
   root "movies#index"
