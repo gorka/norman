@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
   end
 
   def search
+    authorize :movie
     @movies = []
 
     if params[:query]
