@@ -14,5 +14,11 @@
       <span><%= @movie.runtime %></span>
     </div>
   </div>
+
+  <% if policy(View).new? %>
+    <div>
+      <%= link_to "Add view", new_movie_view_path(@movie) %>
+    </div>
+  <% end %>
 </div>
 

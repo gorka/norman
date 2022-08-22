@@ -1,0 +1,28 @@
+<div>
+  <h1 class="text-2xl">View <%= @movie.title %></h1>
+
+  <% if @view.errors.any? %>
+    <div class="p-2 bg-red-300">
+      <% @view.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form_with model: [@movie, @view] do |view| %>
+    <div>
+      <%= view.label :date %><br />
+      <%= view.date_select :date %>
+    </div>
+    <div>
+      <%= view.label :rating %><br />
+      <%= view.select :rating, (1..10) %>
+    <div>
+      <%= view.label :comment %><br />
+      <%= view.text_area :comment %>
+    </div>
+    <div>
+      <%= view.submit "Add view" %>
+    </div>
+  <% end %>
+</div>
