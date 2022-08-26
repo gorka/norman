@@ -17,5 +17,11 @@
       </div>
     <% end %>
   </div>
+
+  <% if policy(@view).edit? %>
+    <div class="mt-5 text-center">
+      <%= link_to "Edit", edit_view_path(@view), class: "btn" %>
+    </div>
+  <% end %>
 </div>
 
