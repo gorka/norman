@@ -3,6 +3,8 @@ class MoviesController < ApplicationController
   end
 
   def show
+    authorize Movie
+
     tmdb_id = params[:id]
     
     @movie = Movie.find_or_create_by(tmdb_id: tmdb_id) do |movie|

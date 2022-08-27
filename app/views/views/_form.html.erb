@@ -1,0 +1,25 @@
+<%= form_with model: [@movie, @view] do |view| %>
+  <div class="px-2 bg-white rounded-md">
+    <div>
+      <%= view.label :date %><br />
+      <%= view.date_select :date %>
+    </div>
+    <div>
+      <%= view.label :rating %><br />
+      <%= view.select :rating, (1..5) %>
+    </div>
+    <div>
+      <%= view.label :comment %><br />
+      <%= view.text_area :comment %>
+    </div>
+  </div>
+
+  <div class="mt-5 flex justify-between items-center">
+    <div>
+      <%= view.submit "#{action_name.capitalize} view", class: "btn" %>
+      <%= link_to "Delete", @view, class: "btn", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </div>
+    <%= link_to "Back to view", view_path(@view) if action_name == "edit" %>
+  </div>
+<% end %>
+

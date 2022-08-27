@@ -1,5 +1,5 @@
 <div class="mx-auto w-full md:max-w-2xl">
-  <h1 class="text-4xl mb-5"><%= @view.viewable.title %></h1>
+  <h1 class="text-4xl mb-5"><%= link_to @view.viewable.title, polymorphic_path(@view.viewable_type.tableize.singularize, id: @view.viewable.tmdb_id) %></h1>
 
   <div class="p-2 flex flex-col md:flex-row flex-wrap justify-between bg-white rounded-md">
     <div class="flex space-x-3">
@@ -17,5 +17,11 @@
       </div>
     <% end %>
   </div>
+
+  <% if policy(@view).edit? %>
+    <div class="mt-5 text-center">
+      <%= link_to "Edit", edit_view_path(@view), class: "btn" %>
+    </div>
+  <% end %>
 </div>
 
