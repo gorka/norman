@@ -32,6 +32,11 @@ class ViewPolicyTest < ActiveSupport::TestCase
     refute Pundit.policy(user, View).update?
   end
 
+  test "cannot delete a view" do
+    user = nil
+    refute Pundit.policy(user, @view).destroy?
+  end
+
   # USER (OWNS THE VIEW)
 
   test "can view it's own view" do
@@ -59,6 +64,11 @@ class ViewPolicyTest < ActiveSupport::TestCase
     assert Pundit.policy(user, @view).update?
   end
 
+  test "can destroy it's own view" do
+    user = users(:one)
+    assert Pundit.policy(user, @view).destroy?
+  end
+
   # USER (DOES NOT OWN THE VIEW)
 
   test "can view another user's view" do
@@ -74,5 +84,10 @@ class ViewPolicyTest < ActiveSupport::TestCase
   test "cannot post an update to another user's view" do
     user = users(:two)
     refute Pundit.policy(user, @view).update?
+  end
+
+  test "cannot destroy another user's view" do
+    user = users(:two)
+    refute Pundit.policy(user, @view).destroy?
   end
 end

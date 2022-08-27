@@ -1,5 +1,5 @@
 class ViewsController < ApplicationController
-  before_action :get_view, only: %i( show edit update )
+  before_action :set_view, only: %i( show edit update destroy )
 
   def index
     @views = View.all.order(date: :desc, created_at: :desc)
@@ -36,9 +36,15 @@ class ViewsController < ApplicationController
     end
   end
 
+  def destroy
+    @view.destroy
+
+    redirect_to root_path, status: 303, notice: "View deleted successfully."
+  end
+
   private
 
-    def get_view
+    def set_view
       @view = authorize View.find(params[:id])
     end
 

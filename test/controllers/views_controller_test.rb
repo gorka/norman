@@ -31,14 +31,17 @@ class ViewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "guest cannot get edit" do
-    view = views(:one)
-    get edit_view_path(view)
+    get edit_view_path(@view)
     assert_response :redirect
   end
 
   test "guest cannot post update" do
-    view = views(:one)
-    patch view_path(view)
+    patch view_path(@view)
+    assert_response :redirect
+  end
+
+  test "guest cannot destroy a view" do
+    delete view_url(@view)
     assert_response :redirect
   end
 
@@ -83,6 +86,15 @@ class ViewsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to view_url(@view)
   end
 
+  test "user can destroy it's own view" do
+    sign_in users(:one)
+    assert_difference("View.count", -1) do
+      delete view_url(@view)
+    end
+
+    assert_redirected_to root_path
+  end
+
   # USER (DOES NOT OWN VIEW)
 
   test "user cannot get edit another user's view" do
@@ -94,6 +106,12 @@ class ViewsControllerTest < ActionDispatch::IntegrationTest
   test "user cannot post update another user's view" do
     sign_in users(:two)
     patch view_url(@view), params: { view: { rating: 3 } }
+    assert_response :redirect
+  end
+
+  test "user cannot destroy another user's view" do
+    sign_in users(:two)
+    delete view_url(@view)
     assert_response :redirect
   end
 end
