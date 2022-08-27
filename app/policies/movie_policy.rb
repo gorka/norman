@@ -1,5 +1,5 @@
 class MoviePolicy < ApplicationPolicy
-  def show
+  def show?
     true
   end
 

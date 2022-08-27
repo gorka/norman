@@ -1,11 +1,11 @@
 class ViewsController < ApplicationController
   before_action :get_view, only: %i( show edit update )
+
   def index
     @views = View.all.order(date: :desc, created_at: :desc)
   end
 
   def show
-    @view = authorize View.find(params[:id])
   end
 
   def new
@@ -39,10 +39,10 @@ class ViewsController < ApplicationController
   private
 
     def get_view
-      @view = View.find(params[:id])
+      @view = authorize View.find(params[:id])
     end
 
     def view_params
-      params.require(:view).permit(:date, :rating, :comment).merge(user_id: current_user.id)
+      params.require(:view).permit(:date, :rating, :comment).merge(user_id: current_user&.id)
     end
 end
