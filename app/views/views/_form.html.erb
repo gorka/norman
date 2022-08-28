@@ -1,5 +1,5 @@
 <%= form_with model: [@movie, @view] do |view| %>
-  <div class="px-2 bg-white rounded-md">
+  <div class="p-2 bg-white rounded-md">
     <div>
       <%= view.label :date %><br />
       <%= view.date_select :date %>
@@ -10,7 +10,7 @@
     </div>
     <div>
       <%= view.label :comment %><br />
-      <%= view.text_area :comment %>
+      <%= view.rich_text_area :comment %>
     </div>
   </div>
 
