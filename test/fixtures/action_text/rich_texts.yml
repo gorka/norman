@@ -2,3 +2,8 @@
 #   record: name_of_fixture (ClassOfFixture)
 #   name: content
 #   body: <p>In a <i>million</i> stars!</p>
+
+view_one_comment:
+  record: one (View)
+  name: comment
+  body: This is the first view comment.

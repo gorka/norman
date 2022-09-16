@@ -4,7 +4,6 @@ one:
   user: one
   date: 2022-08-21
   rating: 1
-  comment: MyText
   viewable: one
   viewable_type: Movie
 
@@ -12,6 +11,5 @@ two:
   user: two
   date: 2022-08-21
   rating: 1
-  comment: MyText
   viewable: two
   viewable_type: Movie
