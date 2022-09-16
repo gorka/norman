@@ -1,0 +1,29 @@
+<div id="<%= dom_id book %>" class="p-2 bg-white rounded-md">
+  <h2>
+    <%= link_to_unless(action_name == "show", book.title, book, class: "text-xl") %>
+    <% if book.subtitle.present? %>
+      <span class="text-lg">— <%= book.subtitle %></span>
+    <% end %>
+  </h2>
+
+  <%= book.author %>
+
+  <% if action_name == "show" %>
+    <p class="my-5">
+      ISBN: <%= book.isbn %>
+    </p>
+
+    <% if book.web.present? %>
+      <p class="my-5">
+        <%= link_to "Web", book.web %>
+      </p>
+    <% end %>
+
+    <% if book.description.present? %>
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Description:</strong>
+        <%= book.description %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
