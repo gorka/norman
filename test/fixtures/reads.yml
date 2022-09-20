@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  book: one
+  date: 2022-09-16
+  rating: 4
+
+two:
+  user: two
+  book: one
+  date: 2022-09-16
+  rating: 3

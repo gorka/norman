@@ -1,0 +1,21 @@
+<div class="mx-auto w-full md:max-w-2xl"> 
+  <h1 class="text-2xl md:text-4xl mb-5">Últimos libros leídos</h1>
+
+  <div class="space-y-3">
+    <% @reads.each do |read| %>
+      <div class="flex flex-wrap md:flex-nowrap justify-between md:justify-start md:space-x-5 p-2 bg-white rounded-md">
+        <div class="order-2 md:order-1">
+          <%= read.date.to_fs(:short) %>
+        </div>
+        <div class="order-1 md:order-2 w-full md:w-auto md:grow">
+          <%= link_to "#{read.book.title} (#{read.book.author})", read_path(read) %>
+        </div>
+        <div class="order-3 flex space-x-5 justify-end items-center">
+          <%= rating_stars(read.rating) %>
+          <%= svg_icon("comment", read.comment.present?) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

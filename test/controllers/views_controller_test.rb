@@ -7,7 +7,7 @@ class ViewsControllerTest < ActionDispatch::IntegrationTest
 
   # GUEST
 
-  test "gues can get views" do
+  test "guest can get views" do
     get views_path
     assert_response :success
   end

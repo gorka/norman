@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :books
+  resources :books do
+    resources :reads, shallow: true
+  end
+
+  resources :reads, only: %i( index)
+
   resources :movies, only: %i( index show ) do
     collection do
       get :search
@@ -9,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :views, shallow: true
   end
+
   resources :views, only: %i( index )
 
   root "views#index"

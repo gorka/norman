@@ -22,6 +22,7 @@ class BooksTest < ApplicationSystemTestCase
   test "show book should not have edit & destroy links" do
     visit book_url(@book)
 
+    refute_text "Añadir lectura"
     refute_text "Edit book"
     refute_text "Destroy book"
   end
@@ -49,6 +50,9 @@ class BooksTest < ApplicationSystemTestCase
     sign_in @user
 
     visit book_url(@book)
+
+    assert_text "Añadir lectura"
+
     click_on "Edit book", match: :first
 
     fill_in "Author", with: @book.author
