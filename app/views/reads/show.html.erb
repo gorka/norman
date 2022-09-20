@@ -1,0 +1,25 @@
+<div class="mx-auto w-full md:max-w-2xl">
+  <h1 class="text-4xl mb-5"><%= link_to @read.book.title, @read.book %></h1>
+
+  <div class="p-2 flex flex-col md:flex-row flex-wrap justify-between bg-white rounded-md">
+    <div class="flex space-x-3">
+      <%= svg_icon("calendar") %>
+      <span><%= @read.date.to_fs(:rfc822) %></span>
+    </div>
+    <div class="flex mt-3 md:mt-0">
+      <%= rating_stars(@read.rating) %>
+    </div>
+    <% if @read.comment.present? %>
+      <div class="w-full mt-5 pt-3 border-t border-slate-100">
+        <%= @read.comment %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if policy(@read).edit? %>
+    <div class="mt-5 text-center">
+      <%= link_to "Edit", edit_read_path(@read), class: "btn" %>
+    </div>
+  <% end %>
+</div>
+

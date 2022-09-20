@@ -1,0 +1,28 @@
+<%= form_with model: [@book, @read] do |form| %>
+  <div class="p-2 bg-white rounded-md">
+    <div>
+      <%= form.label :date %><br />
+      <%= form.date_select :date %>
+    </div>
+
+    <div>
+      <%= form.label :rating %><br />
+      <%= form.select :rating, (1..5) %>
+    </div>
+
+    <div>
+      <%= form.label :comment %><br />
+      <%= form.rich_text_area :comment %>
+    </div>
+  </div>
+
+  <div class="mt-5 flex justify-between items-center">
+    <div class="space-x-5">
+      <%= form.submit "#{action_name.capitalize} read", class: "btn" %>
+      <%= link_to "Delete", @read, class: "btn", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } if action_name == "edit" %>
+    </div>
+
+    <%= link_to "Ver lectura", read_path(@read), class: "text-blue-600 hover:text-black transition" if action_name == "edit" %>
+  </div>
+<% end %>
+

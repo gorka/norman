@@ -15,6 +15,8 @@
     <div class="md:container mx-auto flex justify-between md:mt-3 p-2 bg-white md:rounded-md">
       <div class="space-x-3">
         <%= link_to "Home", root_path %>
+        <%= link_to "Lecturas", reads_path %>
+        <%= link_to "Visionados", views_path %>
         <%= link_to "Libros", books_path if policy(Book).index? && user_signed_in? %>
         <%= link_to "Search movie", search_movies_path if policy(Movie).search? %>
       </div>

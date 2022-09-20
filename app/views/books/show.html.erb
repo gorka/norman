@@ -1,10 +1,13 @@
 <div class="mx-auto w-full md:max-w-2xl">
   <%= render @book %>
 
-  <% if policy(@book).edit? || policy(@book).destroy? %>
-    <div class="mt-5 flex space-x-5">
-      <%= link_to 'Edit book', edit_book_path(@book), class: "text-blue-600 hover:text-black transition" if policy(@book).edit? %>
-      <%= button_to 'Destroy book', book_path(@book), method: :delete, class: "text-blue-600 hover:text-black transition" if policy(@book).destroy?%>
+  <% if user_signed_in? %>
+    <div class="mt-5 flex justify-between">
+      <%= link_to "Añadir lectura", new_book_read_path(@book), class: "text-blue-600 hover:text-black transition" if policy(Read).new? %>
+      <div class="flex space-x-5">
+        <%= link_to 'Edit book', edit_book_path(@book), class: "text-blue-600 hover:text-black transition" if policy(@book).edit? %>
+        <%= button_to 'Destroy book', book_path(@book), method: :delete, class: "text-blue-600 hover:text-black transition" if policy(@book).destroy?%>
+      </div>
     </div>
   <% end %>
 </div>
