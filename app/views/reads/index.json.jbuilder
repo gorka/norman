@@ -3,4 +3,5 @@ json.array! @reads do |read|
   json.book do
     json.extract! read.book, :title, :subtitle, :isbn, :author, :web, :description
   end
+  json.comment read.comment.body
 end
